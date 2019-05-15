@@ -1,0 +1,93 @@
+###############################################################################
+# GITIGNORE
+###############################################################################
+
+# Reference:
+# https://git-scm.com/docs/gitignore
+
+# List of good templates:
+# https://github.com/github/gitignore
+
+# -----------------------------------------------------------------------------
+# BACKUPS
+# -----------------------------------------------------------------------------
+
+# https://github.com/github/gitignore/blob/master/Global/Backup.gitignore
+
+*.bak
+*.gho
+*.ori
+*.orig
+*.tmp
+
+# -----------------------------------------------------------------------------
+# VIM
+# -----------------------------------------------------------------------------
+
+# https://github.com/github/gitignore/blob/master/Global/Vim.gitignore
+
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Session
+Session.vim
+
+# Temporary
+.netrwhist
+*~
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
+
+# -----------------------------------------------------------------------------
+# VSCODE
+# -----------------------------------------------------------------------------
+
+# https://github.com/github/gitignore/blob/master/Global/VisualStudioCode.gitignore
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# -----------------------------------------------------------------------------
+# MACOS
+# -----------------------------------------------------------------------------
+
+# https://github.com/github/gitignore/blob/master/Global/macOS.gitignore
+
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# -----------------------------------------------------------------------------
+# APPLICATION SPECIFIC
+# -----------------------------------------------------------------------------
+
+###############################################################################

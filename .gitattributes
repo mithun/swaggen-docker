@@ -1,0 +1,14 @@
+###############################################################################
+# GITATTRIBUTES
+###############################################################################
+
+# Reference:
+# https://git-scm.com/docs/gitattributes
+
+# Useful templates:
+# https://github.com/alexkaratarakis/gitattributes
+
+# Everything in this repository is a text file
+* text eol=lf
+
+###############################################################################
