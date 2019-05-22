@@ -29,6 +29,9 @@ LABEL Description="Unofficial Docker image for https://github.com/yonaskolb/Swag
 
 COPY --from=builder /tmp/swaggen-install/ /usr/local/
 
+# Apply Patch from: https://github.com/yonaskolb/SwagGen/commit/0cc6676a6bd50bacbe4ed77f0f8d7011d90dfb1f
+RUN sed -i 's|enum.swift|Enum.swift|g' /usr/local/share/swaggen/Templates/Swift/template.yml
+
 COPY Dockerfile /Dockerfile
 COPY LICENSE /LICENSE
 COPY VERSION /VERSION
