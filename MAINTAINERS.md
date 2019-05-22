@@ -13,7 +13,7 @@ docker build                                   \
 .
 
 # Test
-docker run --rm mayachit/swaggen:${SWAGGEN_VERSION} --version
+docker run --rm mayachit/swaggen:${SWAGGEN_VERSION} swaggen --version
 
 # Push
 docker login
