@@ -17,7 +17,7 @@ docker run --rm mackoj/swaggen-docker:${SWAGGEN_VERSION} swaggen --version
 
 # Push
 docker login
-docker tag mackoj/swaggen-docker:${SWAGGEN_VERSION} mayachit/swaggen:latest
+docker tag mackoj/swaggen-docker:${SWAGGEN_VERSION} mackoj/swaggen-docker:latest
 docker push mackoj/swaggen-docker:${SWAGGEN_VERSION}
 docker push mackoj/swaggen-docker:latest
 
