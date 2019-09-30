@@ -6,7 +6,7 @@
 # BUILD STAGE
 # -----------------------------------------------------------------------------
 
-FROM swift:5.1-slim as builder
+FROM swift:5.1 as builder
 
 RUN apt-get update && apt-get install -y curl
 
