@@ -25,9 +25,9 @@ RUN curl -LSs --fail -o /tmp/swaggen.tgz -- "${SWAGGEN_ARCHIVE}" \
 # RUN STAGE
 # -----------------------------------------------------------------------------
 
-FROM swift:5.1.1
+FROM swift:5.1.1-slim
 LABEL maintainer="${MAINTAINER}"
-LABEL Description="Docker image for ${SWAGGEN_REPO}"
+LABEL Description="Slim Docker image for ${SWAGGEN_REPO}"
 
 COPY --from=builder /tmp/swaggen-install/ /usr/local/
 
