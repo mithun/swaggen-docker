@@ -25,4 +25,4 @@ docker run                 \
   --destination /tmp/workdir/swaggen-output
 ```
 
-The project is a fork of [Mithun Ayachit](https://github.com/mithun) [swaggen-docker](https://hub.docker.com/r/mayachit/swaggen) without his orignal project I wouldn't be able to build this.
+The project is a fork of [mithun](https://github.com/mithun)([swaggen-docker](https://hub.docker.com/r/mayachit/swaggen)) without his orignal project I wouldn't be able to build this.
