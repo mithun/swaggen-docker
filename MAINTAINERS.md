@@ -1,26 +1,27 @@
-## Publishing
+# How To Update this project on Docker
+
+- Go to https://github.com/yonaskolb/SwagGen/releases copy the tag in VERSION file
+- configure env.sh
+- run `./build.sh` this should build the docker image
+- run `./test.sh` this should display the version that you have put in the VERSION file
+- run `./tag.sh` this tag the version
+- run `./publish.sh` this update docker hib with the docker image that you just have created
+
 
 ```bash
-# Set version
-declare SWAGGEN_VERSION="$(cat VERSION)"
+# Update your local images
+docker pull hawkci/swaggen
+```
 
-# Build
-docker build                                   \
---build-arg SWAGGEN_VERSION=${SWAGGEN_VERSION} \
---force-rm                                     \
---pull                                         \
---tag mayachit/swaggen:${SWAGGEN_VERSION}      \
-.
-
-# Test
-docker run --rm mayachit/swaggen:${SWAGGEN_VERSION} swaggen --version
-
-# Push
-docker login
-docker tag mayachit/swaggen:${SWAGGEN_VERSION} mayachit/swaggen:latest
-docker push mayachit/swaggen:${SWAGGEN_VERSION}
-docker push mayachit/swaggen:latest
-
-# Tag docker repo
-git tag "v${SWAGGEN_VERSION}"
+```bash
+# Run swaggen
+#   - This assumes your spec file is in $(pwd)/spec.json
+#   - Generated code will be available in $(pwd)/swaggen-output
+docker run                 \
+  --rm                     \
+  -v "$(pwd):/tmp/workdir" \
+  hawkci/swaggen           \
+  swaggen generate         \
+  /tmp/workdir/spec.json   \
+  --destination /tmp/workdir/swaggen-output
 ```
