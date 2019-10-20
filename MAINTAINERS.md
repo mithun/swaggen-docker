@@ -1,4 +1,4 @@
-# How To Update this project on Docker
+## How To Update this project on Docker
 
 - Go to https://github.com/yonaskolb/SwagGen/releases copy the tag in VERSION file
 - configure env.sh
@@ -8,13 +8,14 @@
 - run `./publish.sh` this update docker hib with the docker image that you just have created
 
 
+## Update your local images
 ```bash
-# Update your local images
 docker pull hawkci/swaggen
 ```
 
+## You can run the lastest and greatest swaggen version ever 😌
+
 ```bash
-# Run swaggen
 #   - This assumes your spec file is in $(pwd)/spec.json
 #   - Generated code will be available in $(pwd)/swaggen-output
 docker run                 \
