@@ -6,13 +6,14 @@
 # BUILD STAGE
 # -----------------------------------------------------------------------------
 
-FROM swift:5.1 as builder
+FROM "${SWIFT_VERSION}" as builder
 
 RUN apt-get update && apt-get install -y curl
 
 ARG SWAGGEN_VERSION
-# ENV SWAGGEN_ARCHIVE="https://github.com/yonaskolb/SwagGen/archive/${SWAGGEN_VERSION}.tar.gz"
-ENV SWAGGEN_ARCHIVE="https://github.com/mackoj/SwagGen/archive/${SWAGGEN_VERSION}.tar.gz"
+ARG MAINTAINER
+ARG SWAGGEN_REPO
+ENV SWAGGEN_ARCHIVE="${SWAGGEN_REPO}/archive/${SWAGGEN_VERSION}.tar.gz"
 RUN curl -LSs --fail -o /tmp/swaggen.tgz -- "${SWAGGEN_ARCHIVE}" \
     && cd /tmp                                                   \
     && tar -xzf swaggen.tgz                                      \
@@ -24,9 +25,9 @@ RUN curl -LSs --fail -o /tmp/swaggen.tgz -- "${SWAGGEN_ARCHIVE}" \
 # RUN STAGE
 # -----------------------------------------------------------------------------
 
-FROM swift:5.1-slim
-LABEL maintainer="Mithun Ayachit <m0t0rbr3th@gmail.com>"
-LABEL Description="Unofficial Docker image for https://github.com/yonaskolb/SwagGen"
+FROM "${SWIFT_VERSION}"
+LABEL maintainer="${MAINTAINER}"
+LABEL Description="Docker image for ${SWAGGEN_REPO}"
 
 COPY --from=builder /tmp/swaggen-install/ /usr/local/
 
