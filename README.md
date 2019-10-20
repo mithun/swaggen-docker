@@ -2,8 +2,6 @@
 
 **Unofficial Docker image** for [SwagGen](https://github.com/yonaskolb/SwagGen)
 
-Docker URL: https://hub.docker.com/r/hawkci/swaggen
-
 ## Available Tags
 
 * `4.2.0-slim`, `latest` ([_Dockerfile_](https://github.com/mackoj/swaggen-docker/blob/v4.2.0/Dockerfile))
