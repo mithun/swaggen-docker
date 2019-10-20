@@ -1,17 +1,17 @@
 # swaggen-docker
 
-Unofficial Docker image for [SwagGen](https://github.com/yonaskolb/SwagGen)
+**Unofficial Docker image** for [SwagGen](https://github.com/yonaskolb/SwagGen)
 
 ## Available Tags
 
-* `4.2.0`, `latest` ([_Dockerfile_](https://github.com/mithun/swaggen-docker/blob/v4.2.0/Dockerfile))
-* `4.1.0` ([_Dockerfile_](https://github.com/mithun/swaggen-docker/blob/v4.1.0/Dockerfile))
+* `4.2.0-slim`, `latest` ([_Dockerfile_](https://github.com/mackoj/swaggen-docker/blob/v4.2.0/Dockerfile))
+* `4.2.0` ([_Dockerfile_](https://github.com/mackoj/swaggen-docker/blob/v4.2.0/Dockerfile))
 
 ## Usage
 
 ```bash
 # Pull this image
-docker pull mayachit/swaggen
+docker pull hawkci/swaggen
 
 # Run swaggen
 #   - This assumes your spec file is in $(pwd)/spec.json
@@ -19,10 +19,10 @@ docker pull mayachit/swaggen
 docker run                 \
   --rm                     \
   -v "$(pwd):/tmp/workdir" \
-  mayachit/swaggen         \
+  hawkci/swaggen           \
   swaggen generate         \
   /tmp/workdir/spec.json   \
   --destination /tmp/workdir/swaggen-output
 ```
 
-* * *
+The project is a fork of [mithun](https://github.com/mithun)([swaggen-docker](https://hub.docker.com/r/mayachit/swaggen)) without his orignal project I wouldn't be able to build this.
