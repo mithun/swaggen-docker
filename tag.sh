@@ -1,3 +1,3 @@
 . ./env.sh
 
-git tag "${SWAGGEN_VERSION}"
+git tag "${DOCKER_VERSION}"
