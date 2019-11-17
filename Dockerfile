@@ -11,7 +11,7 @@ FROM swift:5.0.1 as builder
 RUN apt-get update && apt-get install -y curl
 
 ARG SWAGGEN_VERSION
-ENV SWAGGEN_ARCHIVE="https://github.com/yonaskolb/SwagGen/archive/${SWAGGEN_VERSION}.tar.gz"
+ENV SWAGGEN_ARCHIVE="https://github.com/mithun/SwagGen/archive/${SWAGGEN_VERSION}.tar.gz"
 RUN curl -LSs --fail -o /tmp/swaggen.tgz -- "${SWAGGEN_ARCHIVE}" \
     && cd /tmp                                                   \
     && tar -xzf swaggen.tgz                                      \
