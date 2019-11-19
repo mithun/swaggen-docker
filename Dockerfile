@@ -6,7 +6,7 @@
 # BUILD STAGE
 # -----------------------------------------------------------------------------
 
-FROM swift:5.1.1 as builder
+FROM swift:latest as builder
 
 RUN apt-get update && apt-get install -y curl
 
@@ -25,7 +25,7 @@ RUN curl -LSs --fail -o /tmp/swaggen.tgz -- "${SWAGGEN_ARCHIVE}" \
 # RUN STAGE
 # -----------------------------------------------------------------------------
 
-FROM swift:5.1.1-slim
+FROM swift:slim
 LABEL maintainer="${MAINTAINER}"
 LABEL Description="Slim Docker image for ${SWAGGEN_REPO}"
 
