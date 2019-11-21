@@ -4,7 +4,8 @@ Unofficial Docker image for [SwagGen](https://github.com/yonaskolb/SwagGen)
 
 ## Available Tags
 
-* `4.2.0`, `latest` ([_Dockerfile_](https://github.com/mithun/swaggen-docker/blob/v4.2.0/Dockerfile))
+* `4.3.0`, `latest` ([_Dockerfile_](https://github.com/mithun/swaggen-docker/blob/v4.3.0/Dockerfile))
+* `4.2.0` ([_Dockerfile_](https://github.com/mithun/swaggen-docker/blob/v4.2.0/Dockerfile))
 * `4.1.0` ([_Dockerfile_](https://github.com/mithun/swaggen-docker/blob/v4.1.0/Dockerfile))
 
 ## Usage
