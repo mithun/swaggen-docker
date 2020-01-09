@@ -6,7 +6,10 @@ LAST_SWIFT_VERSION="$(cat NEW_SWIFT_VERSION)"
 OLD_LAST_SWAGGEN_VERSION="$(cat LAST_SWAGGEN_VERSION)"
 OLD_LAST_SWIFT_VERSION="$(cat LAST_SWIFT_VERSION)"
 
-if [[ "${LAST_SWAGGEN_VERSION}" != LAST_SWAGGEN_VERSION ]] && [[ "${LAST_SWIFT_VERSION}" != OLD_LAST_SWIFT_VERSION ]]; then
+if [[ "${LAST_SWAGGEN_VERSION}" != "${OLD_LAST_SWAGGEN_VERSION}" ]] || [[ "${LAST_SWIFT_VERSION}" != "${OLD_LAST_SWIFT_VERSION}" ]]; then
+    echo "${LAST_SWAGGEN_VERSION}" > LAST_SWAGGEN_VERSION
+    echo "${LAST_SWIFT_VERSION}" > LAST_SWIFT_VERSION
+
     # Build
     docker build                                                    \
     --build-arg DOCKER_VERSION="${DOCKER_VERSION}"                  \
@@ -18,9 +21,13 @@ if [[ "${LAST_SWAGGEN_VERSION}" != LAST_SWAGGEN_VERSION ]] && [[ "${LAST_SWIFT_V
     --tag "${DOCKER_USER}/${DOCKER_PROJECT}:${DOCKER_VERSION}"      \
     .
 
-    echo "${LAST_SWAGGEN_VERSION}" > LAST_SWAGGEN_VERSION
-    echo "${LAST_SWIFT_VERSION}" > LAST_SWIFT_VERSION
 else
-  echo "No need to update"
+  echo "|LAST_SWIFT_VERSION = ${LAST_SWIFT_VERSION}|"
+  echo "|OLD_LAST_SWIFT_VERSION = ${OLD_LAST_SWIFT_VERSION}|"
+  echo "|LAST_SWAGGEN_VERSION = ${LAST_SWAGGEN_VERSION}|"
+  echo "|OLD_LAST_SWAGGEN_VERSION = ${OLD_LAST_SWAGGEN_VERSION}|"
+  echo "--"
+  echo "No need to update 👍"
 fi
 
+rm NEW_SWIFT_VERSION
