@@ -84,7 +84,7 @@ func main(_ args : [String]) {
       switch result {
       case .success(let version):
         print(version)
-        do { try version.write(toFile: args[3], atomically: true, encoding: .utf8) } catch {
+        do { try "\(version)\n".write(toFile: args[3], atomically: true, encoding: .utf8) } catch {
           print(error)
           exit(EXIT_FAILURE)
         }
