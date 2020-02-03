@@ -16,11 +16,6 @@ if [[ "${LAST_SWAGGEN_VERSION}" != "${OLD_LAST_SWAGGEN_VERSION}" ]] || [[ "${LAS
     .
 
 else
-  echo "|LAST_SWIFT_VERSION = ${LAST_SWIFT_VERSION}|"
-  echo "|OLD_LAST_SWIFT_VERSION = ${OLD_LAST_SWIFT_VERSION}|"
-  echo "|LAST_SWAGGEN_VERSION = ${LAST_SWAGGEN_VERSION}|"
-  echo "|OLD_LAST_SWAGGEN_VERSION = ${OLD_LAST_SWAGGEN_VERSION}|"
-  echo "--"
   echo "No need to update 👍"
 fi
 
