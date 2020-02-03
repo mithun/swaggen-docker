@@ -2,6 +2,13 @@
 
 **Unofficial Docker image** for [SwagGen](https://github.com/yonaskolb/SwagGen)
 
+## Update process
+
+In order to update the docker image just run `./build.sh`
+If Swift or Swaggen has a new version it will create a new docker container accordingly.
+
+This require you to have installed `swift-sh`([Github](https://github.com/mxcl/swift-sh)).
+
 ## Available Tags
 
 * `4.3.0-slim`, `latest` ([_Dockerfile_](https://github.com/mackoj/swaggen-docker/blob/v4.3.0/Dockerfile))
