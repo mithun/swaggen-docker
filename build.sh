@@ -16,6 +16,8 @@ if [[ "${LAST_SWAGGEN_VERSION}" != "${OLD_LAST_SWAGGEN_VERSION}" ]] || [[ "${LAS
     .
 
 else
+  echo "Swaggen: ${LAST_SWAGGEN_VERSION}"
+  echo "Swift: ${LAST_SWIFT_VERSION}"
   echo "No need to update 👍"
 fi
 
