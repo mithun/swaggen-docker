@@ -10,15 +10,17 @@ FROM swift:latest as builder
 
 RUN apt-get update && apt-get install -y curl
 
-ARG SWAGGEN_VERSION
+ARG DOCKER_IMAGE_DESCRIPTION
 ARG MAINTAINER
-ARG SWAGGEN_REPO
-ENV SWAGGEN_ARCHIVE="${SWAGGEN_REPO}/archive/${SWAGGEN_VERSION}.tar.gz"
-RUN curl -LSs --fail -o /tmp/swaggen.tgz -- "${SWAGGEN_ARCHIVE}" \
-    && cd /tmp                                                   \
-    && tar -xzf swaggen.tgz                                      \
-    && mv "./SwagGen-${SWAGGEN_VERSION}" ./swaggen               \
-    && cd /tmp/swaggen                                           \
+ARG EXPECTED_TAR_FILENAME
+ARG DEPENDENCY_ARCHIVE_URL
+ARG GITHUB_USER
+
+RUN curl -LSs --fail -o /tmp/swaggen.tgz -- "${DEPENDENCY_ARCHIVE_URL}"     \
+    && cd /tmp                                                              \
+    && tar -xzf swaggen.tgz                                                 \
+    && mv "$(ls ${EXPECTED_TAR_FILENAME} | grep ${GITHUB_USER})" ./swaggen  \
+    && cd /tmp/swaggen                                                      \
     && make install PREFIX=/tmp/swaggen-install
 
 # -----------------------------------------------------------------------------
@@ -27,7 +29,7 @@ RUN curl -LSs --fail -o /tmp/swaggen.tgz -- "${SWAGGEN_ARCHIVE}" \
 
 FROM swift:slim
 LABEL maintainer="${MAINTAINER}"
-LABEL Description="Slim Docker image for ${SWAGGEN_REPO}"
+LABEL description="${DOCKER_IMAGE_DESCRIPTION}"
 
 COPY --from=builder /tmp/swaggen-install/ /usr/local/
 

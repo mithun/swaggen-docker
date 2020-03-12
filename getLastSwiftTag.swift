@@ -78,16 +78,16 @@ func getTags(_ repo : String, _ releaseFilter : String, completion : @escaping (
 }
 
 func main(_ args : [String]) {
-  if args.count != 4 { print("Bad number of argument. $>./getLastSwiftTag.swift \"apple/swift\" \"-RELEASE\" \"LAST_SWIFT_VERSION\""); exit(EXIT_FAILURE) }
+  if args.count != 3 { print("Bad number of argument. $>./getLastSwiftTag.swift \"apple/swift\" \"-RELEASE\" \"LAST_SWIFT_VERSION\""); exit(EXIT_FAILURE) }
   do {
     try getTags(args[1], args[2]) { result in
       switch result {
       case .success(let version):
-        print("Last Swift Release: \(version)")
-        do { try "\(version)\n".write(toFile: args[3], atomically: true, encoding: .utf8) } catch {
-          print(error)
-          exit(EXIT_FAILURE)
-        }
+        print(version)
+        // do { try "\(version)\n".write(toFile: args[3], atomically: true, encoding: .utf8) } catch {
+        //   print(error)
+        //   exit(EXIT_FAILURE)
+        // }
       case .failure(let err):
         print(err)
         exit(EXIT_FAILURE)
