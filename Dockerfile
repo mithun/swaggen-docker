@@ -19,7 +19,7 @@ ARG GITHUB_USER
 RUN curl -LSs --fail -o /tmp/swaggen.tgz -- "${DEPENDENCY_ARCHIVE_URL}"     \
     && cd /tmp                                                              \
     && tar -xzf swaggen.tgz                                                 \
-    && mv "$(ls ${EXPECTED_TAR_FILENAME} | grep ${GITHUB_USER})" ./swaggen  \
+    && mv "$(ls -d ${EXPECTED_TAR_FILENAME} | grep ${GITHUB_USER})" ./swaggen  \
     && cd /tmp/swaggen                                                      \
     && make install PREFIX=/tmp/swaggen-install
 

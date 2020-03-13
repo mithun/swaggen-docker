@@ -17,7 +17,7 @@ declare DEPENDENCY_VERSION="$(curl --silent "https://api.github.com/repos/${GITH
 declare GITHUB_USER="$(echo ${GITHUB_REPO} | cut -d"/" -f1)"
 declare GITHUB_PROJECT="$(echo ${GITHUB_REPO} | cut -d"/" -f2)"
 declare GITHUB_FULLURL="https://github.com/${GITHUB_REPO}"
-declare OLD_DEPENDENCY_VERSION="$(cat DEPENDENCY_VERSION)"
+declare OLD_DEPENDENCY_VERSION="$(cat VERSION)"
 declare OLD_SWIFT_VERSION="$(cat SWIFT_VERSION)"
 declare EXPECTED_TAR_FILENAME="${GITHUB_USER}-${GITHUB_PROJECT}-*"
 declare DOCKERHUB_PROJECT_ACCOUNT="${DOCKERHUB_USER}/${DOCKERHUB_PROJECT}"
@@ -31,11 +31,11 @@ declare FORCE_UPDATE=false
 
 # TEST for empty DEPENDENCY AND SWIFT VERSION
 if [[ -z "${OLD_DEPENDENCY_VERSION}" ]] && [[ -z "${OLD_SWIFT_VERSION}" ]]; then
-  echo "${DEPENDENCY_VERSION}" > DEPENDENCY_VERSION
+  echo "${DEPENDENCY_VERSION}" > VERSION
   echo "${SWIFT_VERSION}" > SWIFT_VERSION
   FORCE_UPDATE=true
   OLD_SWIFT_VERSION="$(cat SWIFT_VERSION)"
-  OLD_DEPENDENCY_VERSION="$(cat DEPENDENCY_VERSION)"
+  OLD_DEPENDENCY_VERSION="$(cat VERSION)"
   DOCKER_IMAGE_VERSION="${DEPENDENCY_VERSION}-slim"
 fi
 
@@ -62,7 +62,7 @@ if [[ "$FORCE_UPDATE" = true ]] || [[ "${DEPENDENCY_VERSION}" != "${OLD_DEPENDEN
   .
 
   echo "FORCE_UPDATE: ${FORCE_UPDATE}"
-  echo "${DEPENDENCY_VERSION}" > DEPENDENCY_VERSION
+  echo "${DEPENDENCY_VERSION}" > VERSION
   echo "${SWIFT_VERSION}" > SWIFT_VERSION
 
 else
@@ -89,8 +89,8 @@ echo "Tag"
 echo "---------------------------"
 
 ## Delete Tag
-git push --delete origin "${DOCKER_IMAGE_VERSION}"
-git tag -d "${DOCKER_IMAGE_VERSION}"
+git push --delete origin "${DOCKER_IMAGE_VERSION}" || true
+git tag -d "${DOCKER_IMAGE_VERSION}" || true
 
 ## Push Tag
 git tag "${DOCKER_IMAGE_VERSION}" -m "${DEPENDENCY_VERSION}/${SWIFT_VERSION}"
