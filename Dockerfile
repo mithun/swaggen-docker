@@ -6,7 +6,7 @@
 # BUILD STAGE
 # -----------------------------------------------------------------------------
 
-FROM swift:5.0.1 as builder
+FROM swift:5.2 as builder
 
 RUN apt-get update && apt-get install -y curl
 
@@ -23,7 +23,7 @@ RUN curl -LSs --fail -o /tmp/swaggen.tgz -- "${SWAGGEN_ARCHIVE}" \
 # RUN STAGE
 # -----------------------------------------------------------------------------
 
-FROM swift:5.0.1
+FROM swift:5.2-slim
 LABEL maintainer="Mithun Ayachit <m0t0rbr3th@gmail.com>"
 LABEL Description="Unofficial Docker image for https://github.com/yonaskolb/SwagGen"
 
